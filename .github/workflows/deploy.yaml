@@ -32,7 +32,7 @@ jobs:
 
         ## This action is to send email notification for the randomly generated app version numbers
         - name: Send email notification for the latest version of deployment
-          uses: dawidd6/action-send-email@v3
+          uses: dawidd6/action-send-mail@v3
           with:
             username: funkebiola17@gmail.com
             password: ${{ secrets.EMAIL_PASSWORD }}
@@ -42,4 +42,4 @@ jobs:
             subject: "New Docker Image Version for Deployment 1"
             to: "funkebiola17@gmail.com"
             from: "funkebiola17@gmail.com"
-            body: "New image build version"
+            body: "New image build version: ${{ env.APP_VERSION }}"
