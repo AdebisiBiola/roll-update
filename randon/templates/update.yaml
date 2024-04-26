@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books-app
+spec:
+  selector:
+    matchLabels:
+      app: books-app
+  template:
+    metadata:
+      labels:
+        app: books-app
+    spec:
+      containers:
+      - name: books-app
+        image: adebisibiola/books-app:2
+        resources:
+          request: 
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: books-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: books-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
