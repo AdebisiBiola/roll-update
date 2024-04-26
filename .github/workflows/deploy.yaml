@@ -11,7 +11,7 @@ jobs:
           uses: actions/checkout@v2
 
         # This action is to print random generated object numbers
-        - name: "print the github object version number"
+        - name: "Print the github object version number"
           run: |
             echo "APP_VERSION=${RANDOM}" >> GITHUB_ENV
 
